@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title>
+      LOGIN
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label position="floating">E-mail</ion-label>
+    <ion-input #email></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input #senha></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="logar()">Logar</ion-button>
+    <ion-button expand="full" fill="outline" (click)="cadastrar()">Cadastrar</ion-button>
+</ion-content>
