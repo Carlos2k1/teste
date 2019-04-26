@@ -20,7 +20,9 @@ const routes: Routes = [
   { path: 'logoff', 
     loadChildren: './logoff/logoff.module#LogoffPageModule',
     canActivate: [Auth2Guard] 
-  }
+  },  { path: 'lista-de-clientes', loadChildren: './lista-de-clientes/lista-de-clientes.module#ListaDeClientesPageModule' },
+  { path: 'cadastro-de-cliente', loadChildren: './cadastro-de-cliente/cadastro-de-cliente.module#CadastroDeClientePageModule' }
+
 ];
 
 @NgModule({

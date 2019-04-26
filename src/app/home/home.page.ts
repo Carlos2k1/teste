@@ -29,7 +29,13 @@ export class HomePage {
   }
 
   cadastrar(){
-    console.log('ok')
+    this.fire.auth.createUserWithEmailAndPassword(this.email.value,this.senha.value)
+    .then(()=> {
+      console.log("Cadastrado com sucesso!");
+    }).catch(()=>{
+      console.log("Usuário inválido");
+    })
+  
   }
 
 }
