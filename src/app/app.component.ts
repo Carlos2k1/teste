@@ -35,7 +35,7 @@ export class AppComponent {
     },
     {
       title: 'Cadastro de Clientes',
-      url: '/cadastro-de-clientes',
+      url: '/cadastro-de-cliente',
       icon: 'add'
     }
 
