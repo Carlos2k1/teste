@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../model/cliente';
+import { Mensagem } from '../model/mensagem';
 import * as firebase from 'firebase';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-cliente-view',
-  templateUrl: './cliente-view.page.html',
-  styleUrls: ['./cliente-view.page.scss'],
+  selector: 'app-view-mensagem',
+  templateUrl: './view-mensagem.page.html',
+  styleUrls: ['./view-mensagem.page.scss'],
 })
-export class ClienteViewPage implements OnInit {
+export class ViewMensagemPage implements OnInit {
 
-  cliente : Cliente = new Cliente();
+  mensagem : Mensagem = new Mensagem();
   id : string;
   firestore = firebase.firestore();
   settings = {timestampsInSnapshots: true};
@@ -24,30 +26,31 @@ export class ClienteViewPage implements OnInit {
   public router : Router,
   public loadingController: LoadingController,
   public toastController : ToastController) { 
-    this.id = this.activactedRoute.snapshot.paramMap.get('cliente');
+    this.id = this.activactedRoute.snapshot.paramMap.get('mensagem');
     this.form();
   }
 
   form(){
     this.formGroup = this.formBuilder.group({
-      nome : [this.cliente.nome],
-      telefone : [this.cliente.telefone],
-      email : [this.cliente.email],
+      titulo : [this.mensagem.titulo],
+      texto : [this.mensagem.texto],
+      data : [this.mensagem.data],
     });
   }
 
   ngOnInit() {
-    this.obterCliente();
+    this.obterMensagem();
+
   }
 
-  obterCliente(){
-    var ref = firebase.firestore().collection("cliente").doc(this.id);
+  obterMensagem(){
+    var ref = firebase.firestore().collection("mensagem").doc(this.id);
     ref.get().then(doc => {
       
-      this.cliente.setDados(doc.data());
+      this.mensagem.setDados(doc.data());
       this.form();
-      console.log(this.cliente); 
-
+      console.log(this.mensagem); 
+      
     }).catch(function(error){
       console.log("N Funfou");
     })
@@ -57,18 +60,19 @@ export class ClienteViewPage implements OnInit {
 
     this.loading();
 
-    let ref = this.firestore.collection('cliente')
+    let ref = this.firestore.collection('mensagem')
     ref.doc(this.id).set(this.formGroup.value)
       .then(() =>{
         this.toast("Atualizado com Sucesso");
         console.log('Atualizado com Sucesso');
-        this.router.navigate(["/lista-de-clientes"]);
+        this.router.navigate(["/mensagem"]);
         this.loadingController.dismiss();
       }).catch(()=>{
         console.log('Erro ao Atualizar');
         this.toast("Erro ao Atualizar");
       })
   }
+
 
   async loading() {
     const loading = await this.loadingController.create({
@@ -86,5 +90,4 @@ export class ClienteViewPage implements OnInit {
     });
     toast.present();
   }
-
 }

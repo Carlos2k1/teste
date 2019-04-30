@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Lista De Mensagens</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let m of listaDeMensagens">
+
+    <ion-card-header>
+      <ion-card-title>{{m?.ClasseM}}</ion-card-title>
+      <ion-card-subtitle>{{m?.titulo}}</ion-card-subtitle>
+      <ion-card-subtitle>{{m?.texto}}</ion-card-subtitle>
+      <ion-card-subtitle>{{m?.data}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-icon name="share-alt" size="large" (click)="atualiza(m)"></ion-icon>
+    <ion-icon name="trash" size="large" (click)="remove(m)"></ion-icon>
+
+  </ion-card>
+</ion-content>

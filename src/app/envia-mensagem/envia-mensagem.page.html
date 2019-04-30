@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Enviar Mensagem</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="formGroup" (ngSubmit)="cadastrar()">
+    <ion-list>
+      <ion-item>
+          <ion-label position="floating">Título</ion-label>
+          <ion-input formControlName="titulo" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating">texto</ion-label>
+          <ion-input formControlName="texto" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating">Data</ion-label>
+          <ion-input formControlName="data" type="text"></ion-input>
+      </ion-item>  
+    </ion-list>
+    <ion-button expand="full" (click)="cadastrar()">Enviar</ion-button>
+  </form>
+  
+</ion-content>

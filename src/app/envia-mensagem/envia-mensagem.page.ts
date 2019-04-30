@@ -1,32 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-cadastro-de-cliente',
-  templateUrl: './cadastro-de-cliente.page.html',
-  styleUrls: ['./cadastro-de-cliente.page.scss'],
+  selector: 'app-envia-mensagem',
+  templateUrl: './envia-mensagem.page.html',
+  styleUrls: ['./envia-mensagem.page.scss'],
 })
-export class CadastroDeClientePage implements OnInit {
+export class EnviaMensagemPage implements OnInit {
+
 
   formGroup: FormGroup;
   firestore = firebase.firestore();
   settings = {timestampsInSnapshots: true}
-  
+
   constructor(public formBuilder : FormBuilder,
               public router : Router,
               public loadingController: LoadingController,
               public toastController : ToastController) { 
 
-    this.formGroup = this.formBuilder.group({
-      nome : [''],
-      telefone : [''],
-      email : [''],
-    })
-  }
+      this.formGroup = this.formBuilder.group({
+        titulo : [''],
+        texto : [''],
+        data : [''],
+      })
+
+     }
 
   ngOnInit() {
   }
@@ -35,12 +37,12 @@ export class CadastroDeClientePage implements OnInit {
 
     this.loading();
 
-    let ref = this.firestore.collection('cliente')
+    let ref = this.firestore.collection('mensagem')
     ref.add(this.formGroup.value)
       .then(() =>{
-        this.toast("Cadastrado com Sucesso");
-        console.log('Cadastrado com sucesso');
-        this.router.navigate(['/lista-de-clientes']);
+        this.toast("Enviado com Sucesso");
+        console.log('Enviado com sucesso');
+        this.router.navigate(['/mensagem']);
         this.loadingController.dismiss();
       }).catch(()=>{
         console.log('Erro ao cadastrar');
@@ -56,12 +58,12 @@ export class CadastroDeClientePage implements OnInit {
     await loading.present();
   }
 
-
-async toast(msg : string) {
+  async toast(msg : string) {
     const toast = await this.toastController.create({
-      message: 'Cadastrado com sucesso!',
+      message: 'Enviado com sucesso!',
       duration: 2000
     });
     toast.present();
   }
+
 }
