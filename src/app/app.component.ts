@@ -33,16 +33,6 @@ export class AppComponent {
       url: '/cadastro-de-cliente',
       icon: 'add'
     },
-    {
-      title: 'Lista de Mensagem',
-      url: '/mensagem',
-      icon: 'mail'
-    },
-    {
-      title: 'Enviar Mensagem',
-      url: '/envia-mensagem',
-      icon: 'add'
-    }
   ];
 
   constructor(

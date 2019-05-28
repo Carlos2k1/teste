@@ -9,16 +9,24 @@
   <form [formGroup]="formGroup" (ngSubmit)="cadastrar()">
     <ion-list>
       <ion-item>
-        <ion-item class="a">
-          <ion-label class="Nome" position="floating">NOME</ion-label>
-          <ion-input [(ngModel)]="title" class="nome" type="text"></ion-input>
-        </ion-item>
-        <ion-label floating>Telefone</ion-label>
+        <ion-label floating>Nome</ion-label>
+        <ion-input formControlName="nome" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>telefone</ion-label>
         <ion-input formControlName="telefone" type="text"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Email</ion-label>
         <ion-input formControlName="email" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>CEP</ion-label>
+        <ion-input formControlName="cep" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Endereço</ion-label>
+        <ion-input formControlName="endereco" type="text"></ion-input>
       </ion-item>
     </ion-list>
     <ion-button expand="full" (click)="cadastrar()">Cadastrar</ion-button>

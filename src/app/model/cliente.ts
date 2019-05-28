@@ -4,6 +4,8 @@ export class Cliente{
     nome : string;
     telefone : string;
     email : string;
+    cep : string;
+    endereco : string;
 
     constructor(){   
     }
@@ -13,5 +15,7 @@ export class Cliente{
         this.nome = obj.nome;
         this.telefone = obj.telefone;
         this.email = obj.email;
+        this.cep = obj.cep;
+        this.endereco = obj.endereco;
     }
 }

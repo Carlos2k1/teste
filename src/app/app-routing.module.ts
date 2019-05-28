@@ -28,21 +28,6 @@ const routes: Routes = [
     path: 'cliente-view', 
     loadChildren: './cliente-view/cliente-view.module#ClienteViewPageModule' 
   },
-  { 
-    path: 'mensagem', 
-    loadChildren: './mensagem/mensagem.module#MensagemPageModule' 
-  },
-  { 
-    path: 'view-mensagem', 
-    loadChildren: './view-mensagem/view-mensagem.module#ViewMensagemPageModule' 
-  },
-  { 
-    path: 'envia-mensagem', 
-    loadChildren: './envia-mensagem/envia-mensagem.module#EnviaMensagemPageModule' 
-  }
-
-
-
 ];
 
 @NgModule({
